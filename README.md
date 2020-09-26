@@ -21,7 +21,7 @@ console.log(nextCombination); //{ combination: 'a', iterationNumber: 0, state: [
 
 ### Optional parameters
 
-* **startIteration** : *Default: 0*,  Allow you to start from a specifiec iteration number, ex: 12 would give `{ combination: 'aaa', iterationNumber: 12, state: [ 0, 0, 0 ] }` as first item from `Next()`
+* **startIteration** : *Default: 0*,  Allow you to start from a specifiec iteration number, ex: 12 would give `{ combination: 'aaa', iterationNumber: 12, state: [ 0, 0, 0 ] }` as first item from `Next()`.
 * **revertIteration** : *Default: false*, show the array in reverse mode.
 Example: 
 ```js
@@ -36,4 +36,12 @@ Revert: { combination: 'bb', iterationNumber: 7, state: [ 1, 1 ] }
 Revert: { combination: 'cb', iterationNumber: 8, state: [ 2, 1 ] }
 Revert: { combination: 'ac', iterationNumber: 9, state: [ 0, 2 ] }
 ```
-
+* **minlen** : *Default: null*, If a minlen is defined then start with it.
+Example if `minlen = 6`: 
+```js
+MinLen: {combination : 'aaaaaa', iterationNumber: 0, state: [ 0, 0, 0, 0, 0, 0]}
+MinLen: {combination: 'aaaaab', iterationNumber: 1, state: [ 1, 0, 0, 0, 0, 0]}
+MinLen: {combination: 'aaaaac', iterationNumber: 2, state: [ 2, 0, 0, 0, 0, 0]}
+MinLen: {combination': 'aaaaad', iterationNumber: 3, state: [ 3, 0, 0, 0, 0, 0]}
+MinLen: {combination': 'aaaaae', iterationNumber: 4, state: [ 4, 0, 0, 0, 0, 0]}
+```
