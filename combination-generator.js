@@ -21,20 +21,17 @@ class CombinationGenerator {
 
         this.state[0]++;
         for (var i = 0; i < this.state.length; i++) {
-            if (keepOne)
-                {
-                    this.state[i]++;
-                    keepOne = false;
-                }
+            if (keepOne) {
+                this.state[i]++;
+                keepOne = false;
+            }
             if (this.state[i] != 0 && this.state[i] % this.alphabetLen == 0) {
                 keepOne = true;
                 this.state[i] = 0;
             }
         }
-        if (keepOne) {
-            console.log('Add One');
+        if (keepOne)
             this.state.push(0);
-        }
     }
 
     /**
