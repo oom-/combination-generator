@@ -3,7 +3,7 @@ class CombinationGenerator {
      * 
      * @param {string} alphabet Array of different char, string that will be used 
      */
-    constructor(alphabet, startIteration = 0, revertIteration = false) {
+    constructor(alphabet, startIteration = 0, revertIteration = false, minlen = null) {
         this.alphabet = alphabet;
         this.alphabetLen = alphabet.length
         this.currentIteration = -1;
@@ -11,6 +11,10 @@ class CombinationGenerator {
         this.state = [-1];
         for (var i = 0; i < startIteration; i++)
             this.Next();
+        if (minlen != null) {
+            this.state = new Array(minlen).fill(0);
+            this.state[0] = -1;
+        }
     }
 
     /**
