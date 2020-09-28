@@ -2,10 +2,10 @@ class CombinationGenerator {
 
     /**
      * 
-     * @param {Array} alphabet Contains all chains ['a', 'b', 'c', 'd', ...]
-     * @param {*} state The starting state = [0,0] will result by exemple to aa
-     * @param {*} minlen The min len of the current generation: 4 will by example start to aaaa
-     * @param {*} revertIteration Allow to revert the state array bfore to print it, ex: aa -> ba -> ca instead of aa, ab, ac
+     * @param {array} alphabet Contains all chains ['a', 'b', 'c', 'd', ...]
+     * @param {array} state The starting state = [0,0] will result by exemple to aa
+     * @param {number} minlen The min len of the current generation: 4 will by example start to aaaa
+     * @param {boolean} revertIteration Allow to revert the state array bfore to print it, ex: aa -> ba -> ca instead of aa, ab, ac
      */
     constructor(alphabet, state = [-1], minlen = null, revertIteration = false) {
         this.alphabet = alphabet;
