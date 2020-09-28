@@ -1,17 +1,19 @@
 class CombinationGenerator {
+
     /**
      * 
-     * @param {string} alphabet Array of different char, string that will be used 
+     * @param {Array} alphabet Contains all chains ['a', 'b', 'c', 'd', ...]
+     * @param {*} state The starting state = [0,0] will result by exemple to aa
+     * @param {*} minlen The min len of the current generation: 4 will by example start to aaaa
+     * @param {*} revertIteration Allow to revert the state array bfore to print it, ex: aa -> ba -> ca instead of aa, ab, ac
      */
-    constructor(alphabet, startIteration = 0, revertIteration = false, minlen = null) {
+    constructor(alphabet, state = [-1], minlen = null, revertIteration = false) {
         this.alphabet = alphabet;
         this.alphabetLen = alphabet.length
         this.currentIteration = -1;
         this.revertIteration = revertIteration;
-        this.state = [-1];
-        for (var i = 0; i < startIteration; i++)
-            this.Next();
-        if (minlen != null) {
+        this.state = state;
+        if (minlen != null && this.state.length < minlen) {
             this.state = new Array(minlen).fill(0);
             this.state[0] = -1;
         }
