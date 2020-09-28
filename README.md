@@ -21,7 +21,7 @@ console.log(nextCombination); //{ combination: 'a', iterationNumber: 0, state: [
 
 ### Optional parameters
 
-* **startIteration** : *Default: 0*,  Allow you to start from a specifiec iteration number, ex: 12 would give `{ combination: 'aaa', iterationNumber: 12, state: [ 0, 0, 0 ] }` as first item from `Next()`.
+* **state** : *Default: [-1]* The starting state, Example: [0,0] will result in `aa`
 * **revertIteration** : *Default: false*, show the array in reverse mode.
 Example: 
 ```js
