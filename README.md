@@ -58,7 +58,7 @@ function loadpreviousState()
 
 function saveActualState(state)
 {
-    FS.writeFileSync(stateFile, FS.stringify(state));
+    FS.writeFileSync(stateFile, JSON.stringify(state));
 }
 
 //main
