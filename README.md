@@ -45,7 +45,7 @@ Revert: { combination: 'bb', iterationNumber: 7, state: [ 1, 1 ] }
 Revert: { combination: 'cb', iterationNumber: 8, state: [ 2, 1 ] }
 Revert: { combination: 'ac', iterationNumber: 9, state: [ 0, 2 ] }
 ```
-### Example: 
+### Example (simple-iteration): 
 ```js
 const stateFile = './state.json'; //a state file to not lost the previous iteration
 
@@ -75,4 +75,43 @@ while (true)
       //perform task ...
       saveActualState(combi);
   }
+```
+
+### Example (random-iteration): 
+```js
+const alreadycheckfile = './alreadycheck.json'; //a already checked file
+
+function loadAlreadyChecked() {
+    if (FS.existsSync(alreadycheckfile))
+        return JSON.parse(FS.readFileSync(alreadycheckfile));
+    return null;
+}
+
+function saveAlreadyChecked(alreadycheck) {
+    FS.writeFileSync(alreadycheckfile, JSON.stringify(alreadycheck));
+}
+
+function random(min, max) { //min max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+//main
+let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+alphabet = [...alphabet, ...alphabet.map(d => d.toUpperCase())];
+alphabet = [...alphabet, ...['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']]
+
+let alreadyChecked = loadAlreadyChecked();
+alreadyChecked = alreadyChecked != null ? alreadyChecked : [];
+let combigen = new CombiGen(alphabet);
+while (true) {
+    let state = [0, 0, 0, 0, 0, 0, 0].map(start => random(start, alphabet.length - 1)); //as much 0 than char in key
+    let combination = combigen.ConvertStateIntoCombination(state);
+    if (alreadyChecked.indexOf(combination) == -1) {
+        console.log(combination);
+        alreadyChecked.push(combination);
+        saveAlreadyChecked(alreadyChecked);
+    }
+    else
+        console.log('Already checked: ' + combination)
+}
 ```
