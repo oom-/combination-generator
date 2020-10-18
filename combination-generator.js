@@ -43,12 +43,12 @@ class CombinationGenerator {
     /**
      * Convert the state [0, 0] to 'aa'
      */
-    ConvertStateIntoCombination() {
+    ConvertStateIntoCombination(state) {
         let combination = '';
-        let statecpy = this.state;
+        let statecpy = state;
 
         if (!this.revertIteration)
-            statecpy = [...this.state].reverse();
+            statecpy = [...statecpy].reverse();
         for (var i = 0; i < statecpy.length; i++) {
             combination += this.alphabet[statecpy[i]];
         }
@@ -63,7 +63,7 @@ class CombinationGenerator {
 
         res.iterationNumber = ++this.currentIteration;
         this.NextState();
-        res.combination = this.ConvertStateIntoCombination();
+        res.combination = this.ConvertStateIntoCombination(this.state);
         return res;
     }
 }
