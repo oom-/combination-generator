@@ -67,7 +67,7 @@ alphabet = [...alphabet, ...alphabet.map(d => d.toUpperCase())];
 alphabet = [...alphabet, ...['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']]
     
 let previousState = loadpreviousState();
-let combigen = new CombiGen(alphabet, false, 6, previousState != null ? previousState : [-1]);
+let combigen = new CombiGen(alphabet, previousState != null ? previousState : [-1], 6, false);
 
 while (true)
   {
